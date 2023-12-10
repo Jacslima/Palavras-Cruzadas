@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/4d31589572.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Jogo</title>
+</head>
+
+<body>
+    <div class="cabecalho">
+        <div class="botao-dicas">
+            <i class="fa-solid fa-list" onclick="exibirModalDicas()"></i>
+            <span>Dicas</span>
+        </div>
+
+        <span id="pontos">Pontuação: 0</span>
+        <div class="sobre-desempenho">
+
+            <i class="fa-solid fa-retweet" onclick="reiniciarJogo()"></i>
+            <span>Reiniciar</span>
+            
+        </div>
+        
+        
+    </div>
+
+    <dialog id="modalDicas">
+
+        <div class="headerModal">
+            <h3>Dicas</h3>
+            <i class="fa-solid fa-circle-xmark" id="fecharDicas"></i>
+        </div>
+        <div class="bodyModal">
+        <span>
+            <span> 1- chip responsavel pelo processamento de dados,mais conhecido como o "cérebro" do computador.</span>
+            <span> 2- É um bloco que executa operações aritméticas e lógicas. Entre as operações aritméticas que excuta, ela soma, subtrai, divide e determina se um número é positivo ou negativo ou se é zero</span>
+            <span> 3- É um tipo de memória que está localizada dentro da cpu, estando localizada no topo da hierarquia de memória</span>
+            <span> 4- Tipo de memória volátil, armazena apenas dados dos processos atuais em andamento e, quando o sistema é desligado, os dados desaparecem.</span>
+            <span> 5- Memória não-volátil, que só pode ser lida, não escrita, e que serve para definir um software ou sistema.</span>
+            <span> 6- Memória não volátil, permitindo que sejam programados uma vez e, se necessário, apagados por exposição à luz ultravioleta antes de serem regravados.</span>
+            <span> 7- Memória não volátil, permitindo leitura e gravação rápidas de dados eletronicamente.</span>
+            <span> 8- Memória não volátil, que armazena grande quantidade de dados e usados para armazenar dados permanentemente em dispositivos eletrônicos.</span>
+            <span> 9- É o método que permite que um dispositivo de entrada e saída envie ou receba dados diretamente da memória principal, ignorando a CPU, acelerando as operações que envolvem a memória. A ideia desse método é a troca de ordem nos acessos, alterando a sequência comum. A técnica permite que o processador tenha o desempenho poupado e mantenha o foco na tarefa que está realizando, enquanto a transferência de dados atua de maneira independente em segundo plano.</span>
+            <span>10- Linha de controle em eletrônica digital usada para selecionar um dos circuitos integrados entre
+                vários conectados ao mesmo barramento de computador.</span>
+            <span>11- Caminho que conecta o processador ao demais componentes do computador. </span>
+            <span>12- Sistema responsavel pela transmissao de dados e informações.</span>
+            <span>13- Processador que tem menos núcleos e threads
+            </span>
+            <span>14- Processador que pode ter mais núcleos e suportar a tecnologia Hyper-Threading
+            </span>
+            <span>15- Processador que tem dois núcleos, como se fossem dois cérebros. Atualmente é considerado o processador mais simples</span>
+            <span>16- Processador que tem quatro núcleos e trabalha com todos eles ao mesmo tempo</span>
+            <span>17- Sequencia de instruções para o funcionamento dos processadores. é divido em duas ou mais tarefas que podem ser executadas concorrentemente.</span>
+            <span>18-É uma memória para armazenamento de alta velocidade que fornece acesso rápido a dados frequentemente usados. Ela desempenha um papel crucial no desempenho geral do sistema, especialmente em processadores de computador. </span>
+        </span>
+        </div>
+    </dialog>
+
+    <div id="div_jogo">
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input placeholder="10 &rightarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'c')">
+            <input placeholder="17 &rightarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 't')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input placeholder="7 &downarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'f')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'l')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'h')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'r')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'e')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input placeholder="2 &downarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'u')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'l')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <input placeholder="8 &downarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'm')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'e')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'm')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'o')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'r')">
+            <input placeholder="13 &rightarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'i')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <input maxlength="1" class="quadrado quadDisabled" value="*" disabled>
+            <input maxlength="1" class="quadrado"  onkeyup="verificar_letra(this, 'd')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'e')">
+            <input maxlength="1" class="quadrado quadDisabled" value="*" disabled>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'm')">
+            <input placeholder="11 &rightarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, '5')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado"  onkeyup="verificar_letra(this, 'd')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'd')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'r')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input placeholder="15 &rightarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'd')">
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'e')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'u')">
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'l')">
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado quadDisabled" value="*" disabled>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado quadDisabled" value="*" disabled>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'b')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input placeholder="1 &downarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'c')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'p')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'u')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input placeholder="16 &rightarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'q')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'o')">
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'u')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'r')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" placeholder="9 &rightarrow;" onkeyup="verificar_letra(this, 'd')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input placeholder="6 &downarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'e')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'p')">
+            <input id="input_especial" placeholder="5 &downarrow; 4 &rightarrow;" maxlength="1" class="quadrado"
+                onkeyup="verificar_letra(this, 'r')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'o')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'm')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'd')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input placeholder="12 &downarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'd')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 't')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <input maxlength="1" class="quadrado quadDisabled" value="*" disabled>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'b')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'u')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'm')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'c')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'o')">
+            <input placeholder="18 &rightarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'c')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input placeholder="3 &downarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'r')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'e')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'g')">
+            <input placeholder="14 &rightarrow;" maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'i')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 't')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'r')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'a')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'd')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'o')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'r')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'e')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 's')">
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, '7')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'e')">
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'c')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'h')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+        <div class="coluna">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <input maxlength="1" class="quadrado" onkeyup="verificar_letra(this, 'e')">
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+            <div class="espaco"></div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var acertos = 0;
+    var p = 0;
+
+    function verificar_letra(input, letra_correta) {
+        if (input.value != "") {
+            if (input.value == letra_correta) {
+                input.classList.remove("errada");
+                input.classList.add("correta");
+                input.setAttribute('disabled', '');
+                acertos += 2;
+                p++;
+                verificar_pontuacao();
+            } else {
+                input.classList.add("errada");
+                acertos--
+            }
+
+            pontos.innerHTML = `Pontos: ${acertos}`
+        }
+    }
+
+    function verificar_pontuacao() {
+        // 89
+        if (p == 84) {
+           
+            Swal.fire({
+                title: "Fim da palavra cruzada!",
+                text: `Pontuação: ${acertos}`,
+                icon: "success"
+                });
+
+
+            if (acertos >= 168) {
+                
+                Swal.fire({
+                title: "Parabéns! Você é mestre em Arq. Comp!",
+                text: `Pontuação: ${acertos}`,
+                icon: "success"
+                });
+
+            } else if (acertos >= 126) {
+
+                Swal.fire({
+                title: "Boa! Você sabe bastante de Arq. Comp!",
+                text: `Pontuação: ${acertos}`,
+                icon: "success"
+                });
+
+            } else if (acertos >= 84) {
+                
+                Swal.fire({
+                title: "Na média com potêncial para melhorar! Tente outra vez.",
+                text: `Pontuação: ${acertos}`,
+                icon: "info"
+                });
+
+            } else if (acertos >= 42) {
+                
+                Swal.fire({
+                title: "Arq. Comp não é o seu forte, né? Se esforce um pouco mais!",
+                text: `Pontuação: ${acertos}`,
+                icon: "warning"
+                });
+
+            } else {
+                Swal.fire({
+                title: "Você definitivamente dorme muito nas aulas de Arq. Comp. Preste mais atenção!!!",
+                text: `Pontuação: ${acertos}`,
+                icon: "error"
+                });
+            }
+        }
+    }
+
+
+
+    function exibirModalDicas() {
+
+        const modalDicas = document.querySelector("dialog")
+        const fecharDicas = document.getElementById("fecharDicas")
+
+
+        modalDicas.showModal();
+
+
+        
+        fecharDicas.onclick = function () {
+            modalDicas.close()
+        }
+
+
+
+    }
+
+
+    function reiniciarJogo(){
+
+        window.location.reload();
+    }
+
+</script>
